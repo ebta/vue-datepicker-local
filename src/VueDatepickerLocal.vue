@@ -58,16 +58,16 @@ export default {
       type: Object,
       default () {
         return {
-          dow: 1, // Monday is the first day of the week
-          hourTip: '选择小时', // tip of select hour
-          minuteTip: '选择分钟', // tip of select minute
-          secondTip: '选择秒数', // tip of select second
-          yearSuffix: '年', // format of head
-          monthsHead: '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'), // months of head
-          months: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'), // months of panel
-          weeks: '一_二_三_四_五_六_日'.split('_'), // weeks
-          cancelTip: '取消', // default text for cancel button
-          submitTip: '确定' // default text for submit button
+            dow: 1,
+            hourTip: "Pilih jam",
+            minuteTip: "Pilih menit",
+            secondTip: "Pilih detik",
+            yearSuffix: "",
+            monthsHead: "Januari_Februari_Maret_April_Mei_Juni_Juli_Agustur_September_Oktober_November_Desember".split("_"),
+            months: "Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nov_Des".split("_"),
+            weeks: "Sn_Sl_Rb_Km_Jm_Sb_Mg".split("_"),
+            cancelTip: "Cancel",
+            submitTip: "Konfirmasi"
         }
       }
     },
