@@ -12,8 +12,8 @@
         <vue-datepicker-local-calendar v-model="dates[0]"></vue-datepicker-local-calendar>
       </template>
       <div v-if="showButtons" class="datepicker__buttons">
-        <button @click.stop="cancel" class="datepicker__button-cancel">{{this.local.cancelTip}}</button>
-        <button @click.stop="submit" class="datepicker__button-select">{{this.local.submitTip}}</button>
+        <button @click.prevent.stop="cancel" class="datepicker__button-cancel">{{this.local.cancelTip}}</button>
+        <button @click.prevent.stop="submit" class="datepicker__button-select">{{this.local.submitTip}}</button>
       </div>
     </div>
   </transition>
@@ -72,7 +72,7 @@ export default {
       }
     },
     showButtons: {
-      type: Boolean, 
+      type: Boolean,
       default: false
     },
     dateRangeSelect: [Function]
@@ -107,6 +107,7 @@ export default {
       return Array.isArray(this.value) ? this.dates : this.dates[0]
     },
     cls () {
+      this.$emit('clear')
       this.$emit('input', this.range ? [] : '')
     },
     vi (val) {
@@ -116,10 +117,10 @@ export default {
         return val ? new Array(new Date(val)) : [new Date()]
       }
     },
-    ok () {
+    ok (leaveOpened) {
       const $this = this
       $this.$emit('input', $this.get())
-      !$this.showButtons && setTimeout(() => {
+      !leaveOpened && !$this.showButtons && setTimeout(() => {
         $this.show = $this.range
       })
     },
@@ -161,6 +162,7 @@ export default {
       this.show = false
     },
     cancel () {
+      this.$emit('cancel')
       this.show = false
     }
   },
